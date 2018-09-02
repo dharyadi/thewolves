@@ -4,7 +4,6 @@
 certifi==2018.8.24
 django==2.1
 pip==10.0.1
-python==python3.7
 pytz==2018.5
 setuptools==40.2.0
 vc==14.1
