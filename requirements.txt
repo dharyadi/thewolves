@@ -7,7 +7,7 @@ pip==10.0.1
 python==3.7.0
 pytz==2018.5
 setuptools==40.2.0
-vc=14.1==h0510ff6_3
-vs2015_runtime==15.5.2=3
+vc==14.1
+vs2015_runtime==15.5.2
 wheel==0.31.1
 wincertstore==0.2
