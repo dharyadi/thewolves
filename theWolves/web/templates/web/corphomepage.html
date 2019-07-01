@@ -1,0 +1,39 @@
+﻿{% extends 'web/base2.html' %}
+
+{% block content %}
+<div class="col">
+	<div class="row no-gutters">
+		<div class="list-group display: inline-block">
+		  <a href="#!" class="list-group-item disabled">Generate Reports</a>
+		  <a href="{%url 'branchdrilldown' %}" class="list-group-item list-group-item-action">Branch Drill Down</a>
+		  <a href="#!" class="list-group-item list-group-item-action">Parking Lot Availability</a>
+		  <a href="#!" class="list-group-item list-group-item-action">Aggregate Vehicle Prices</a>
+          <a href="{%url 'addCustomer' %}" class="list-group-item list-group-item-action">Create new customer</a>
+		</div>
+		<div class="col-6">
+			<div class="card">
+		<div class="card-header">
+			Corporate Dashboard
+		</div>
+			<div class="card-body">
+				<blockquote class="card-blockquote">
+				{% if mostPopularVehicles %}
+					<p>10 Most popular vehicle rentals to date</p>
+					    {% for vehicle in mostPopularVehicles %}
+						  <li>
+							  <a href="{{ vehicle.get_absolute_url }}">{{ vehicle.rentedvehicle }}</a>
+						  </li>
+						{% endfor %}
+				{% else %}
+							<p>Unable to display.</p>
+				{% endif %}
+
+				</blockquote>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+ {% endblock %}

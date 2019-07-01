@@ -1,0 +1,82 @@
+{% extends 'web/corporate/base/corp_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="content-wrapper">
+
+  <div class="container-fluid">
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+      <form method="get">
+        <div class="well">
+          <h4 style="margin-top: 0">Filter</h4>
+          <div class="row">
+
+  
+            <div class="form-group col-sm-3 col-md-3">
+              {{ branches_filter.form.state.label_tag }}
+              {% render_field branches_filter.form.state class="form-control" %}
+            </div>
+
+
+          </div>
+          <button type="submit" class="btn btn-primary" style="background-color:#0D0A0B;border-color:#0D0A0B">
+            <span class="glyphicon glyphicon-search"></span> Search
+          </button>
+        </div>
+      </form>
+
+
+      <br/>
+      <div class="card-header">
+        <i class="fas fa-table"></i>
+        Branches</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Branch ID</th>
+                  <th>Branch Name</th>
+                  <th>Address</th>
+                  <th>State</th>
+                  <th>Phone Number</th>
+
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Branch ID</th>
+                  <th>Branch Name</th>
+                  <th>Address</th>
+                  <th>State</th>
+                  <th>Phone Number</th>
+                </tr>
+              </tfoot>
+              <tbody>
+                {% for branch in branches_filter.qs %}
+                <tr>
+
+                  <td>{{ branch.branchid }} </td>
+                  <td>{{ branch.city }}</td>
+                  <td>{{ branch.street }} </td>
+                  <td>{{ branch.state }} </td>
+                  <td>{{ branch.tellno }} </td>
+
+                </tr>
+                {% endfor %}
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  {% endblock %}

@@ -1,0 +1,40 @@
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul class="sidebar navbar-nav" style="background-color :#00132c;" >
+    <li class="nav-item active">
+      <a class="nav-link" href="{%url 'staff_dashboard' %}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+
+
+	      <!-- New Customer -->
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'addCustomer' %}">
+        <i class="fas fa-plus"></i>
+        <span>New Customer</span>
+      </a>
+    </li>
+
+	      <!-- Vehicle Status -->
+    <li class="nav-item">
+      <a class="nav-link" href="{%url 'updateVehicleStatus' %}">
+        <i class="fas fa-plus"></i>
+        <span>Vehicle Status</span>
+      </a>
+
+
+    </li>
+
+    <!-- Logout-->
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'logout'%}">
+        <i class="fas fa-fw fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+
+
+    </li>
+
+  </ul>

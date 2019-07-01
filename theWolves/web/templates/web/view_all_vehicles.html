@@ -1,0 +1,48 @@
+﻿{% extends 'web/base/base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="ht-tm-cat">
+    <div class="ht-tm-codeblock">
+      <h5 style="text-align:center;">All Vehicle Available</h5>
+      <table class="table table-hover table-striped ht-tm-element">
+        <thead class="thead-dark">
+        <tr>
+          <th>Car Name</th>
+          <th>Seat Capacity</th>
+          <th>Location</th>
+        </tr>
+        </thead>
+        <tbody>
+          {% for car in cars%}
+        <tr class = "clickable-row" data-href = "../specification/{{ car.vehicleid }}">
+          <td>{{car.make}} {{car.model}} {{car.series}} </td>
+          <td>{{car.seatcapacity}}</td>
+          <td>{{car.latest_order.returnstore.city}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <script>
+          jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+            window.location = $(this).data("href");
+            });
+
+            $(".clickable-row").hover(function() {
+              $(this).css( 'cursor', 'pointer' );
+
+            });
+          });
+        </script>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  {% endblock %}

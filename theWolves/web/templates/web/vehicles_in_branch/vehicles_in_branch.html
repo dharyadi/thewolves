@@ -1,0 +1,98 @@
+{% extends 'web/base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<br/>
+
+  <div class="container">
+
+    <!-- Table displaying branches -->
+    <div class="card mb-3">
+      <div class="card-header">
+        <i class="fas fa-table"></i>
+        Vehicles Available in {{branchName}}</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Car Name</th>
+                  <th>Seat Capacity</th>
+
+                </tr>
+              </thead>
+
+              <tfoot>
+                <tr>
+                  <th>Car Name</th>
+                  <th>Seat Capacity</th>
+                </tr>
+              </tfoot>
+
+              <tbody>
+
+                {% for car in vehicles %}
+                <tr class = "clickable-row" data-href = "/specification/{{ car.vehicleid }}">
+                  <td>  {{car.make}} {{car.model}} {{car.series}}  </td>
+                  <td>{{car.seatcapacity}}</td>
+                </tr>
+                {% endfor %}
+                <script>
+                jQuery(document).ready(function($) {
+                  $(".clickable-row").click(function() {
+                    window.location = $(this).data("href");
+                  });
+
+                  $(".clickable-row").hover(function() {
+                    $(this).css( 'cursor', 'pointer' );
+
+                  });
+                });
+                </script>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+
+    </div>
+
+
+
+  <!-- /.container-fluid -->
+  <!-- Bootstrap core JavaScript-->
+
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Page level plugin JavaScript-->
+
+  <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+
+  <script src="{% static 'vendor/datatables/jquery.dataTables.js' %}"></script>
+
+
+  <script src="{% static 'vendor/datatables/dataTables.bootstrap4.js' %}"></script>
+
+  <!-- Custom scripts for all pages-->
+
+  <script src="{% static 'js/sb-admin.min.js' %}"></script>
+
+  <!-- Demo scripts for this page-->
+
+  <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+
+
+
+
+{% endblock %}

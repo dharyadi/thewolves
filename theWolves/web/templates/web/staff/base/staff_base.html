@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<!-- head -->
+{% include "web/staff/base/staff_head.html" %}
+
+<body>
+
+  {% include "web/staff/base/staff_header.html" %}
+  {% include "web/staff/base/staff_nav.html" %}
+
+  {% block content %}
+  {% endblock %}
+
+  <!-- Footer -->
+  {% include "web/base/footer.html" %}
+  <!-- Footer End -->
+  {% include "web/corporate/script.html" %}
+
+</body>
+
+</html>

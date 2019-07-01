@@ -1,0 +1,46 @@
+{% extends 'web/base/base.html' %}
+
+{% block content %}
+<div class="container">
+
+  <div class="ht-tm-cat">
+
+
+    <div class="ht-tm-codeblock">
+      </br>
+
+    <h5 style="text-align:center;">Branches Nationwide</h5>
+
+
+      <table class="table table-hover table-striped ht-tm-element">
+        <thead class="thead-dark">
+        <tr>
+
+          <th>Branch</th>
+
+        </tr>
+        </thead>
+        <tbody>
+          {% for branch in branches %}
+        <tr >
+
+          <td><a href="../salestrend/{{ branch.branchid }}">{{branch}}</a>  </td>
+
+
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

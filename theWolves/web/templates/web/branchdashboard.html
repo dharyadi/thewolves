@@ -1,0 +1,78 @@
+{% extends 'web/base/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+      {{stateAndBranchForm}}
+      <br/>
+      <form load-branches-url = "{% url 'ajax_load_branches' %}" id = 'state-branch-form'>
+
+
+        <script>
+          $(document).ready(function(){
+            $("#state-queries").change(function () {
+              var url = $("#state-branch-form").attr("load-branches-url");
+                var state = $(this).val();
+
+              $.ajax({
+                url: url,
+                data: {
+                  'state':state,
+                },
+                success:function(data) {
+
+                  $("#branch-queries").html(data);
+                  $("#branch-card-name").html("Branch Information");
+                },
+              });
+            });
+        });
+        </script>
+      </form>
+
+      <br/>
+      <div class="ht-tm-codeblock ht-tm-btn">
+        <div class="ht-tm-element card text-center">
+          <div id = "branch-card-name" class="card-header" branch-card-url = "{% url 'ajax_load_branch_name' %}">
+            Branches Information
+          </div>
+          <script>
+            $(document).ready(function(){
+              $("#branch-queries").change(function () {
+                // $('#branch-queries').trigger('change')
+                var url = $("#branch-card-name").attr("branch-card-url");
+                var branch = $(this).val();
+
+                $.ajax({
+                  url: url,
+                  data: {
+                    'branch':branch,
+                  },
+                  success:function(data) {
+                    $("#branch-card-name").html(data);
+                  },
+                });
+              });
+          });
+          </script>
+
+          <div class="card-body">
+            <a href="#!" class="btn btn-primary">Vehicles in the Branch</a>
+          </div>
+          <div class="card-body">
+            <a href="{%url 'salesTrend'%}" class="btn btn-primary">Monthly Sales Trend</a>
+          </div>
+          <div class="card-body">
+            <a href="#!" class="btn btn-primary">Parking Lot Availability</a>
+          </div>
+
+          <div class="card-body">
+
+            <a href="#!" class="btn btn-primary">Customer's Report</a>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+  {% endblock %}

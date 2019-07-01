@@ -1,0 +1,172 @@
+{% extends 'web/corporate/base/corp_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="content-wrapper">
+
+  <div class="container-fluid">
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+      <form method="get">
+        <div class="well">
+          <h4 style="margin-top: 0">Filter</h4>
+          <div class="row">
+
+            <div class="form-group col-sm-4 col-md-4">
+              {{ vehicles_filter.form.make.label_tag }}
+              {% render_field vehicles_filter.form.make class="form-control" %}
+            </div>
+            <div class="form-group col-sm-4 col-md-4">
+              {{ vehicles_filter.form.model.label_tag }}
+              {% render_field vehicles_filter.form.model class="form-control" %}
+            </div>
+            <div class="form-group col-sm-4 col-md-4">
+              {{ vehicles_filter.form.series.label_tag }}
+              {% render_field vehicles_filter.form.series class="form-control" %}
+            </div>
+            <div class="form-group col-sm-4 col-md-4">
+              {{ vehicles_filter.form.year.label_tag }}
+              {% render_field vehicles_filter.form.year class="form-control" %}
+            </div>
+            <div class="form-group col-sm-3 col-md-3 ">
+              {{ vehicles_filter.form.pricenew.label_tag  }}
+              {% render_field vehicles_filter.form.pricenew class="form-control "  %}
+            </div>
+
+            <div class="form-group col-sm-4 col-md-4">
+              {{ vehicles_filter.form.enginesize.label_tag }}
+              {% render_field vehicles_filter.form.enginesize class="form-control" %}
+            </div>
+
+            <div class="form-group col-sm-4 col-md-4">
+              {{ vehicles_filter.form.fuelsystem.label_tag }}
+              {% render_field vehicles_filter.form.fuelsystem class="form-control" %}
+            </div>
+
+            <div class="form-group col-sm-4 col-md-4">
+              {{ vehicles_filter.form.tankcapacity.label_tag }}
+              {% render_field vehicles_filter.form.tankcapacity class="form-control" %}
+            </div>
+
+            <div class="form-group col-sm-4 col-md-4">
+              {{ vehicles_filter.form.power.label_tag }}
+              {% render_field vehicles_filter.form.power class="form-control" %}
+            </div>
+
+            <div class="form-group col-sm-4 col-md-4">
+              {{ vehicles_filter.form.seatcapacity.label_tag }}
+              {% render_field vehicles_filter.form.seatcapacity class="form-control" %}
+            </div>
+
+            <div class="form-group col-sm-4 col-md-4">
+              {{ vehicles_filter.form.standardtransmission.label_tag }}
+              {% render_field vehicles_filter.form.standardtransmission class="form-control" %}
+            </div>
+
+
+            <div class="form-group col-sm-4 col-md-4">
+              {{ vehicles_filter.form.bodytype.label_tag }}
+              {% render_field vehicles_filter.form.bodytype class="form-control" %}
+            </div>
+
+            <div class="form-group col-sm-4 col-md-4">
+              {{ vehicles_filter.form.drive.label_tag }}
+              {% render_field vehicles_filter.form.drive class="form-control" %}
+            </div>
+
+            <div class="form-group col-sm-4 col-md-4">
+              {{ vehicles_filter.form.wheelbase.label_tag }}
+              {% render_field vehicles_filter.form.wheelbase class="form-control" %}
+            </div>
+
+          </div>
+          <button type="submit" class="btn btn-primary" style="background-color:#0D0A0B;border-color:#0D0A0B">
+            <span class="glyphicon glyphicon-search"></span> Search
+          </button>
+        </div>
+      </form>
+
+
+      <br/>
+      <div class="card-header">
+        <i class="fas fa-table"></i>
+        Branches</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Vehicle ID</th>
+                  <th>Make</th>
+                  <th>Model</th>
+                  <th>Series</th>
+                  <th>Year</th>
+                  <th>Price New</th>
+                  <th>Engine Size</th>
+                  <th>Fuel System</th>
+                  <th>Tank Capacity</th>
+                  <th>Power</th>
+                  <th>Sear Capacity</th>
+                  <th>Standard Transmission</th>
+                  <th>Body Type</th>
+                  <th>Drive</th>
+                  <th>Wheel Base</th>
+
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Vehicle ID</th>
+                  <th>Make</th>
+                  <th>Model</th>
+                  <th>Series</th>
+                  <th>Year</th>
+                  <th>Price New</th>
+                  <th>Engine Size</th>
+                  <th>Fuel System</th>
+                  <th>Tank Capacity</th>
+                  <th>Power</th>
+                  <th>Sear Capacity</th>
+                  <th>Standard Transmission</th>
+                  <th>Body Type</th>
+                  <th>Drive</th>
+                  <th>Wheel Base</th>
+                </tr>
+              </tfoot>
+              <tbody>
+                {% for vehicle in vehicles_filter.qs %}
+                <tr>
+
+                  <td>{{ vehicle.vehicleid }} </td>
+                  <td>{{ vehicle.make }}</td>
+                  <td>{{ vehicle.model }} </td>
+                  <td>{{ vehicle.series }} </td>
+                  <td>{{ vehicle.year }} </td>
+                  <td>{{ vehicle.pricenew }} </td>
+                  <td>{{ vehicle.enginesize}}</td>
+                  <td>{{ vehicle.fuelsystem }} </td>
+                  <td>{{ vehicle.tankcapacity }} </td>
+                  <td>{{ vehicle.power }} </td>
+                  <td>{{ vehicle.seatcapacity }} </td>
+                  <td>{{ vehicle.standardtransmission }} </td>
+                  <td>{{ vehicle.bodytype }} </td>
+                  <td>{{ vehicle.drive }} </td>
+                  <td>{{ vehicle.wheelbase }} </td>
+
+                </tr>
+                {% endfor %}
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  {% endblock %}

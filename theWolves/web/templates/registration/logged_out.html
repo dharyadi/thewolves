@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+{% load static %}
+<!-- head -->
+{% include "web/corporate/base/corp_head.html" %}
+
+<body>
+
+{% include "web/corporate/base/corp_header.html" %}
+
+<div class="container">
+  <br>
+<div class="text-center">
+  <h1>Logged out!</h1>
+  <hr>
+  <a href="{% url 'login'%}">Click here to login again.</a>
+</div>
+</div><!-- /.container -->
+<!-- Footer -->
+{% include "web/base/footer.html" %}
+<!-- Footer End -->
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+</body>
+
+</html>

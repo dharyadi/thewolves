@@ -1,0 +1,33 @@
+<thead class="thead-dark">
+<tr>
+
+  <th>Car Name</th>
+  <th>Seat Capacity</th>
+  <th>Location</th>
+</tr>
+</thead>
+<tbody>
+  {% for car in vehicles %}
+<tr class = "clickable-row" data-href = "../specification/{{ car.vehicleid }}">
+
+  <td>{{car.vehicleid}}  {{car.make}} {{car.model}} {{car.series}}  </td>
+  <td>{{car.seatcapacity}}</td>
+  <td>{{car.latest_order.returnstore.city}}</td>
+</tr>
+
+<script>
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+    window.location = $(this).data("href");
+    });
+
+    $(".clickable-row").hover(function() {
+      $(this).css( 'cursor', 'pointer' );
+
+    });
+  });
+</script>
+
+
+{% endfor %}
+</tbody>

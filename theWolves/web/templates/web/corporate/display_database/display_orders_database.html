@@ -1,0 +1,120 @@
+{% extends 'web/corporate/base/corp_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div id="content-wrapper">
+
+  <div class="container-fluid">
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+      <form method="get">
+        <div class="well">
+          <h4 style="margin-top: 0">Filter</h4>
+          <div class="row">
+            <div class="form-group col-sm-3 col-md-3">
+              {{ orders_filter.form.createdate.label_tag }}
+              {% render_field orders_filter.form.createdate class="form-control" %}
+            </div>
+
+            <div class="form-group col-sm-3 col-md-3">
+              {{ orders_filter.form.pickupdate.label_tag }}
+              {% render_field orders_filter.form.pickupdate class="form-control" %}
+            </div>
+
+            <div class="form-group col-sm-3 col-md-3">
+              {{ orders_filter.form.returndate.label_tag }}
+              {% render_field orders_filter.form.returndate class="form-control" %}
+            </div>
+
+            <div class="form-group col-sm-3 col-md-3">
+              {{ orders_filter.form.pickupstore.label_tag }}
+              {% render_field orders_filter.form.pickupstore class="form-control" %}
+            </div>
+
+            <div class="form-group col-sm-3 col-md-3">
+              {{ orders_filter.form.returnstore.label_tag }}
+              {% render_field orders_filter.form.returnstore class="form-control" %}
+            </div>
+
+            <div class="form-group col-sm-3 col-md-3">
+              {{ orders_filter.form.rentedvehicle.label_tag }}
+              {% render_field orders_filter.form.rentedvehicle class="form-control" %}
+            </div>
+
+            <div class="form-group col-sm-3 col-md-3">
+              {{ orders_filter.form.order.label_tag }}
+              {% render_field orders_filter.form.order class="form-control" %}
+            </div>
+
+          </div>
+          <button type="submit" class="btn btn-primary" style="background-color:#0D0A0B;border-color:#0D0A0B">
+            <span class="glyphicon glyphicon-search"></span> Search
+          </button>
+        </div>
+      </form>
+
+
+      <br/>
+      <div class="card-header">
+        <i class="fas fa-table"></i>
+        orders</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Create Date</th>
+                  <th>Pickup Date</th>
+                  <th>Return Date</th>
+                  <th>Pickup Store</th>
+                  <th>Return Store</th>
+                  <th>Rented Vehicle</th>
+                  <th>Customer</th>
+
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Create Date</th>
+                  <th>Pickup Date</th>
+                  <th>Return Date</th>
+                  <th>Pickup Store</th>
+                  <th>Return Store</th>
+                  <th>Rented Vehicle</th>
+                  <th>Customer</th>
+                </tr>
+              </tfoot>
+              <tbody>
+                {% for order in orders_filter.qs %}
+                <tr>
+
+                  <td>{{ order.orderid }} </td>
+                  <td>{{ order.createdate }}</td>
+                  <td>{{ order.pickupdate}} </td>
+                  <td>{{ order.returndate }} </td>
+                  <td>{{ order.pickupstore }} </td>
+                  <td>{{ order.returnstore }} </td>
+                  <td>{{ order.rentedvehicle}}</td>
+                  <td>{{ order.customer }} </td>
+                
+
+
+                </tr>
+                {% endfor %}
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  {% endblock %}

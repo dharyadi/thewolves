@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en" dir="ltr">
+
+<!-- Please add your head file (js,css,etc) in the head.html  -->
+<!-- Head -->
+{% include "web/base/head.html" %}
+<!-- Head end -->
+
+<body>
+  <!-- Header -->
+  {% include "web/base/header.html" %}
+  <!-- Header end-->
+
+  {% block content %}
+  {% endblock %}
+
+  <!-- Footer -->
+  {% include "web/base/footer.html" %}
+  <!-- Footer End -->
+</body>
+
+</html>

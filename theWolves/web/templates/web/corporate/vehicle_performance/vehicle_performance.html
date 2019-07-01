@@ -1,0 +1,47 @@
+{% extends 'web/corporate/base/corp_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+
+
+<div id="content-wrapper">
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Vehicle Performance Comparison</li>
+    </ol>
+    <ul>
+    <br />
+        <div class="card">
+            <div class="card-body">
+
+                <form action="{% url 'vehicle_performance_result' %}" method="get">
+                    {% csrf_token %}
+                    <label for="sel1">Month</label>
+                    <br />
+                    <input type="month" name="date" value="2005-07">
+                    <br />
+                    <br />
+                    <label for="sel2">Vehicle Body Types</label>
+                    <br />
+                    {% for v in vehicles %}
+                    <input type="checkbox" name="checks[]" value="{{ v.bodytype }}" />{{ v.bodytype }}<br />
+                    {% endfor %}
+                    <br />
+                    <br />
+                    <button type="submit" class="btn btn-primary" id='submit'>Submit</button>
+                </form>
+            </div>
+        </div>
+        <br />
+    </div>
+        </div>
+
+
+
+{% endblock %}

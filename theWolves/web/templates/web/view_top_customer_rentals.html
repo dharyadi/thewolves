@@ -1,0 +1,11 @@
+{% extends 'web/base/base.html' %}
+
+{% block content %}
+
+{%for rented_vehicles in top_customer_rentals%}
+
+{{rented_vehicles.rentedvehicles__series}}
+
+{%endfor%}
+
+ {% endblock %}

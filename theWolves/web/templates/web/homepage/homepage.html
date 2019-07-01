@@ -1,0 +1,110 @@
+{% extends 'web/base/base.html' %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Jumbotron Header -->
+  <!-- <header class="jumbotron my-4" style="background-color:#F78B00;"> -->
+  <header class="jumbotron my-4" style="background-color:#FEC106;">
+    <h1 class="display-3">Welcome to Car Rental Center</h1>
+    <a href="{%url 'recommendation' %}" class="btn btn-primary btn-lg" style="background-color:#0D0A0B;border-color:#0D0A0B">Search Car</a>
+    <a href="{%url 'branchstorelocation' %}" class="btn btn-primary btn-lg" style="background-color:#0D0A0B;border-color:#0D0A0B">Store Locator</a>
+  </header>
+
+  <!-- Top 20 Cars Form -->
+  <br/>
+  <div class="row">
+    <div class="col-xl-6">
+      <div class="ht-tm-codeblock ht-tm-btn-replaceable ht-tm-element ht-tm-element-inner">
+        <div class="form-group">
+          {% csrf_token %}
+          {{stateForm}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Features -->
+  <div id = "top-cars" display-top-cars-url = "{% url 'ajax_displayTopCars' %}">
+    <h5 class = 'text-center' id='top-cars-title'>Top 20 Cars Nationwide</h5>
+    <div class="row text-center">
+
+      {% for car in topCars %}
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+          <div class="card-body">
+            <h4 class="card-title">{{car.make}} {{car.model}}</h4>
+            <p class="card-subtitle text-muted">{{car.make}} {{car.model}} {{car.series}}</p>
+            <p class="card-text">{{car.latest_order.returnstore.city}} Branch</p>
+          </div>
+          <div class="card-footer">
+            <a href="../specification/{{ car.vehicleid }}" class="btn btn-primary" style="background-color:#0D0A0B;border-color:#0D0A0B">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      <script>
+      $(document).ready(function(){
+        $("#state-top").change(function () {
+          var url = $("#top-cars").attr("display-top-cars-url");
+          var state = $(this).val();
+
+          $.ajax({
+            url: url,
+            data: {
+              'state':state,
+            },
+            success:function(data) {
+              $("#top-cars").html(data);
+            },
+          });
+        });
+      });
+
+      </script>
+
+    </div>
+  </div>
+
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+
+
+
+<div class="container">
+
+
+
+
+  <!-- Delete this later and move it to company dashboard -->
+  <br>
+  <div class="ht-tm-codeblock ht-tm-btn">
+    <div class="ht-tm-element card text-center">
+      <div class="card-header">
+        Employee Features
+      </div>
+
+
+      <div class="card-body">
+        <h4 class="card-title">Monthly Sales Trend</h4>
+        <p class="card-text">Show Monthly Sales Trend</p>
+        <a href="{%url 'list_all_branches' %}" class="btn btn-primary">Sales Trend</a>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+
+</div>
+{% endblock %}

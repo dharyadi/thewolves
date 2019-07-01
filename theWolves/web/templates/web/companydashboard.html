@@ -1,0 +1,34 @@
+{% extends 'web/base/base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="ht-tm-codeblock ht-tm-btn">
+    <div class="ht-tm-element card text-center">
+      <div class="card-header">
+        Branches Information
+      </div>
+
+      <div class="card-body">
+        <a href="{% url 'branchDashboard' %}" class="btn btn-primary">Branch Information</a>
+      </div>
+
+      <div class="card-body">
+        <a href="#!" class="btn btn-primary">Vehicle Information</a>
+      </div>
+
+      <div class="card-body">
+        <a href="#!" class="btn btn-primary">Branch Performance Comparison</a>
+      </div>
+
+      <div class="card-body">
+        <a href="#!" class="btn btn-primary">Customer Information</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+  {% endblock %}

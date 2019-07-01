@@ -1,0 +1,20 @@
+<h5 class = 'text-center' id='top-cars-title'>Top 20 Cars in {{state}}</h5>
+<div class="row text-center">
+
+  {% for car in topCars %}
+  <div class="col-lg-3 col-md-6 mb-4">
+    <div class="card">
+      <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+      <div class="card-body">
+        <h4 class="card-title">{{car.make}} {{car.model}}</h4>
+        <p class="card-text">{{car.make}} {{car.model}} {{car.series}}</p>
+      </div>
+      <div class="card-footer">
+        <a href="../specification/{{ car.vehicleid }}" class="btn btn-primary" style="background-color:#0D0A0B;border-color:#0D0A0B">Find Out More!</a>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+</div>

@@ -1,0 +1,78 @@
+{% extends 'web/base/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-lg-3">
+			<h2 class="my-4">{{car.latest_order.returnstore.city}} Branch</h2>
+			<ul class="list-group">
+				<li class="list-group-item">{{car.latest_order.returnstore.street}}</li>
+				<li class="list-group-item">{{car.latest_order.returnstore.city}}, {{car.latest_order.returnstore.state}}</li>
+				<li class="list-group-item">{{car.latest_order.returnstore.tellno}}</li>
+			</ul>
+		</div>
+		<!-- /.col-lg-3 -->
+		
+		<div class="col-lg-9">
+
+			<div class="card mt-4">
+				<img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+				<div class="card-body">
+					<h3 class="card-title">{{ car.make }} {{ car.model }}  {{car.series}}</h3>
+					<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
+
+				</div>
+				<div class="ht-tm-cat">
+					<div class="ht-tm-codeblock">
+
+						<table class="table table-hover table-striped ht-tm-element">
+							<thead class="thead-dark">
+								<tbody>
+									<tr>
+										<td>Car Make : {{ car.make }}</td>
+									</tr>
+									<tr>
+										<td>Car Model : {{ car.model }}</td>
+									</tr>
+									<tr>
+										<td>Car Series : {{ car.series }}</td>
+									</tr>
+									<tr>
+										<td>Year : {{ car.year }}</td>
+									</tr>
+									<tr>
+										<td>Engine Size : {{ car.enginesize }}</td>
+									</tr>
+									<tr>
+										<td>Fuel System : {{ car.fuelsystem }}</td>
+									</tr>
+									<tr>
+										<td>Tank Capacity : {{ car.tankcapacity }}</td>
+									</tr>
+									<tr>
+										<td>Power : {{ car.power }}</td>
+									</tr>
+									<tr>
+										<td>Seat Capacity : {{ car.seatcapacity }}</td>
+									</tr>
+									<tr>
+										<td>Standard Transmission : {{ car.standardtransmission }}</td>
+									</tr>
+									<tr>
+										<td>Body Type : {{ car.bodytype }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- /.card -->
+
+	{% endblock %}
